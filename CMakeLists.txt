@@ -20,6 +20,8 @@ include_directories(${G2O_INCLUDE_DIR})
 find_package( Boost 1.40 COMPONENTS program_options REQUIRED )
 include_directories( ${Boost_INCLUDE_DIR} )
 
+# VTK
+find_package(VTK REQUIRED)
 
 # For building the CHOLMOD / CSPARSE solvers
 find_package(Cholmod)
@@ -92,7 +94,7 @@ target_link_libraries(train_map_from_data ${catkin_LIBRARIES} ${G2O_CORE_LIBRARY
 
 add_executable(train_map_from_data_cb src/training/train_map_from_data_cb.cpp src/utilities/utilities.cpp)
 add_dependencies(train_map_from_data_cb rosmrsmap_gencpp)
-target_link_libraries(train_map_from_data_cb ${catkin_LIBRARIES} ${G2O_CORE_LIBRARY} ${G2O_STUFF_LIBRARY} ${G2O_SOLVER_CSPARSE} ${G2O_SOLVER_CSPARSE_EXTENSION} ${G2O_TYPES_SLAM3D} vtkFiltering)
+target_link_libraries(train_map_from_data_cb ${catkin_LIBRARIES} ${G2O_CORE_LIBRARY} ${G2O_STUFF_LIBRARY} ${G2O_SOLVER_CSPARSE} ${G2O_SOLVER_CSPARSE_EXTENSION} ${G2O_TYPES_SLAM3D} ${VTK_LIBRARIES})
 
 
 add_executable(object_tracking_node src/perception/object_tracking_node.cpp src/utilities/utilities.cpp)

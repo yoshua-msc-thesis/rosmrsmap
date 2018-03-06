@@ -62,7 +62,7 @@ void mrsmap::imagesToPointCloud( const sensor_msgs::Image& depthImg, const senso
 
 			float dist = (*depthdata);
 
-    		if( isnan( dist ) ) {
+    		if( std::isnan( dist ) ) {
     			p.x = std::numeric_limits<float>::quiet_NaN();
     			p.y = std::numeric_limits<float>::quiet_NaN();
     			p.z = std::numeric_limits<float>::quiet_NaN();

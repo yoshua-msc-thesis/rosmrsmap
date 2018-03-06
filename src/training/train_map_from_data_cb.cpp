@@ -245,7 +245,7 @@ public:
     	pcl::copyPointCloud( *cloud, *cloud2 );
 
     	for( int i = 0; i < cloud2->points.size(); i++ )
-    		if( isnan( cloud2->points[i].x ) ) {
+    		if( std::isnan( cloud2->points[i].x ) ) {
     			cloud2->points[i].x = 0;
     			cloud2->points[i].y = 0;
     			cloud2->points[i].z = 0;
@@ -473,7 +473,7 @@ public:
 
 				float dist = (*depthdata);
 
-        		if( isnan( dist ) ) {
+        		if( std::isnan( dist ) ) {
         			p.x = std::numeric_limits<float>::quiet_NaN();
         			p.y = std::numeric_limits<float>::quiet_NaN();
         			p.z = std::numeric_limits<float>::quiet_NaN();
@@ -595,7 +595,7 @@ public:
 				// find corresponding 3D position in point cloud
 				float img2cloudScale = ((float)cloud->height) / ((float)displayHeight);
 				unsigned int idx = round(img2cloudScale * ((float)mouse.pt.y)) * cloud->width + round(img2cloudScale * ((float)mouse.pt.x));
-				if( idx < cloud->points.size() && !isnan(cloud->points[idx].x) ) {
+				if( idx < cloud->points.size() && !std::isnan(cloud->points[idx].x) ) {
 
 					//  transform point to reference frame
 					tf::Point tfp;

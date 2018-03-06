@@ -180,7 +180,7 @@ public:
 			for( unsigned int i = 0; i < transformedCloud->points.size(); i++ ) {
 
 				const pcl::PointXYZRGB& p = transformedCloud->points[i];
-				if( isnan( p.x ) ) {
+				if( std::isnan( p.x ) ) {
 					continue;
 				}
 
@@ -255,7 +255,7 @@ public:
 
 			ROS_INFO_STREAM( "registration took: " << deltat );
 
-			if( retVal && !isnan(incTransform(0,0)) ) {
+			if( retVal && !std::isnan(incTransform(0,0)) ) {
 
 				Eigen::Matrix4f incTransformf = incTransform.cast<float>();
 
